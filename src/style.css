@@ -1,0 +1,255 @@
+/* CSS */
+
+
+/* Add hover effect */
+.highlighted:hover {
+  border: 2px solid yellow;
+}
+
+.gender-image-container {
+  display: flex;
+  align-items: center;
+}
+
+.gender-image {
+  max-width: 30px; /* Adjust the width as needed */
+  max-height: 30px; /* Adjust the height as needed */
+  margin-right: 10px; /* Add some spacing between image and text */
+}
+
+/* Custom radio button */
+.custom-radio {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.form-container {
+  margin-bottom: 20px;
+}
+
+/* Hide the default radio button input */
+.custom-radio input {
+  opacity: 0;
+  position: absolute;
+}
+
+/* Styled radio button appearance */
+.custom-radio .radio-button {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+}
+.form-control {
+  width: 100%; /* Full width for most input fields */
+}
+
+#id,
+#name,
+#age {
+  max-width: 80px; /* Limit the width of specific fields */
+}
+.form-group {
+  padding-right: 10px;
+}
+/* Add some margin to the buttons */
+.button-container {
+  margin-top: 10px;
+}
+
+/* Radio button label */
+.custom-radio .radio-label {
+  margin-left: 30px;
+  font-size: 16px;
+}
+
+/* Radio button checked state */
+.custom-radio input:checked + .radio-button {
+  background-color: #2196F3;
+  border-color: #2196F3;
+}
+
+/* Radio button checked state indicator */
+.custom-radio input:checked + .radio-button:after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-label {
+  margin-right: 10px; /* Adjust this margin as needed */
+}
+
+.search-image {
+  width: 20px; /* Adjust the width as needed */
+  height: 20px; /* Adjust the height as needed */
+  margin-right: 10px; /* Adjust this margin as needed */
+}
+
+.search-input {
+  width: 100%; /* Fill the available space */
+}
+
+
+.error-message {
+    color: red;
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+.crud-container {
+    margin-top: 10px;
+  }
+  
+  .form-control {
+    border-radius: 50;
+  }
+  
+  
+  .no-results-message {
+    color: gray;
+  }
+  
+  table {
+    margin-top: 20px;
+  }
+  
+  .btn {
+    margin-right: 5px;
+  }
+  .form-group {
+    margin-bottom: 20px;
+  }
+  .container {
+    padding-top: 20px;
+  }
+  /* Add this CSS to your styles.css or another stylesheet */
+.table-bordered {
+    border: 2px solid #dee2e6; /* Adjust the color and thickness as needed */
+  }
+  .table-row {
+    td,
+    th {
+      padding: 0; /* Reset the padding for table cells */
+    }
+  }
+  
+  .table-container {
+    display: flex;
+  flex-direction: column;
+    background-color: #f2f8fd;
+    padding: 20px;
+    max-height: 300px; /* Set the maximum height of the container */
+    overflow-y: auto; /* Enable vertical scrollbar when content overflows */
+  }
+  
+  .table-header {
+    background-color: #e0ecff; /* Light blue color for header */
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .table-body {
+    padding-top: 40px; /* Adjust this to match the height of the header */
+  }
+  /* styles.css */
+  /* style.css */
+.bg {
+  background-image: url('../public/images/school.jpg'); 
+  width: 100%;
+  height: 100vh; /* Use viewport height to cover the entire screen */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.fields-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Adjust the gap as needed */
+  align-items: center; /* Vertically align the fields */
+  /* Additional styling as needed */
+}
+.error-message {
+  color: red; /* Set the text color to red */
+  font-size: 16px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+
+/* Customize the appearance of the success toast */
+/* toast-styles.css */
+
+/* Customize the styles for the toast container */
+.custom-toast-container {
+  /* Add your custom styles here */
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 5555;
+}
+
+/* Customize the styles for toast messages */
+.custom-toast-message {
+  /* Add your custom styles for toast messages */
+  background-color: green;
+  color: white;
+  border-radius: 4px;
+  padding: 12px;
+}
+
+
+.custom-toast-success {
+  background-color: #4CAF50; /* Change the background color */
+  color: #fff; /* Change the text color */
+  font-size: 16px; /* Change the font size */
+  /* Add other CSS styles as needed */
+}
+/* style.css */
+
+/* Popup container */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+/* Style for individual data fields within the popup */
+.popup p {
+  margin: 5px 0;
+}
+
+/* Style for buttons within the popup */
+.popup button {
+  margin: 5px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.popup button:hover {
+  background-color: #0056b3;
+}
