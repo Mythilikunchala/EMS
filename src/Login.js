@@ -1,8 +1,7 @@
-/*This is the first GIT check in */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import ResponsiveAppBar from './ResponsiveAppBar';
+import ResponsiveAppBar from './ResponsiveAppBar'; // Adjust the path to match your project structure
+
 function Login() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
@@ -11,87 +10,82 @@ function Login() {
 
     async function handleSubmit() {
         // Clear any existing validation errors and login error
-        const emailPattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
         setLoginError(null);
-
-        if (email.trim() === "" || password.trim() === "") {
-            setLoginError("Username and password are required.");
-            return; // Exit early to prevent further processing
+    
+        if (email.trim() === '' || password.trim() === '') {
+            setLoginError('Username and password are required.');
+            return;
         }
-
-        // Clear any existing validation errors and login error
-       
-        else if (!emailPattern.test(email)) {
-                        setLoginError("Enter a valid email address");
-                        return; // Exit early to prevent further processing
-                    }
-        if (email && password) {
-            const apiUrl = 'https://localhost:7113/api/Employee/Login'; // Use the correct URL
-            try {
-                const response = await axios.post(apiUrl, {
-                    Name: email, // Map 'email' to 'Name' in your API
-                    Password: password
-                });
-                const isAuthenticated = response.data;
-                debugger;
-                if (isAuthenticated) {
-                    console.log("hi");
-                    debugger;
-                    // Authentication succeeded, navigate to the CRUD component
-                    navigate('/CRUD');
-                } else {
-                    // Authentication failed, set the error message
-                    setLoginError("Invalid credentials");
-                }
-            } catch (error) {
-                debugger;
-                // Handle any network errors or other exceptions
-                console.error("Login error:", error);
-                setLoginError("An error occurred during login.");
+    
+        try {
+            // Send the user's credentials to the server's Authentication API
+            const response = await fetch('http://192.168.29.60/api/Auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    Username: email, // Change to 'Username'
+                    Password: password,
+                }),
+            });
+    
+            if (response.status === 200) {
+                // Server responds with a JWT token
+                const data = await response.json();
+                const token = data.token;
+    
+                // Store the token securely in localStorage
+                localStorage.setItem('JWTToken', token);
+    
+                // Redirect to different components based on user role
+                navigate('/CRUD');
+            } else {
+                setLoginError('Login failed. Please check your credentials.');
             }
+        } catch (error) {
+            console.error('Login request failed:', error);
+            setLoginError('Login failed. Please try again later.');
+        }
+    }
+    
+
+    function decodeToken(token) {
+        try {
+            const parts = token.split('.');
+            const decodedPayload = JSON.parse(atob(parts[1]));
+            return decodedPayload;
+        } catch (error) {
+            console.error('Token decoding error:', error);
+            return {};
         }
     }
 
     return (
-        
-        
-        <div className="bg">
-            <ResponsiveAppBar />
-            
-            <h1><font color="yellow" align="center">EMPLOYEE MANAGEMENT SYSTEM</font></h1>
-            <div className="border w-25 mt-5 m-auto p-3">
-                
-                <h2 className="text-primary text-center">Login</h2>
-                <div className="mt-3 text-right">
-                    <label style={{ color: 'white' }}>Username:</label>
-                    <input
-                        type='email'
-                        className='form-control'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </div>
-                <div className="mt-3">
-                    <label style={{ color: 'white' }}>Password:</label>
-                    <input
-                        type='password'
-                        className='form-control'
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
-                <div className="mt-1">
-                    {loginError && <div className="text-danger">{loginError}</div>}
-
-
-
-
-                </div>
-                <div className="mt-3">
-                    <button className="btn btn-primary w-100" onClick={handleSubmit}>
-                        Login
-                    </button>
-                </div>
+        <div>
+             <ResponsiveAppBar />
+            <h2>Login</h2>
+            <div>
+                <label>Username:</label>
+                <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+            </div>
+            <div>
+                <label>Password:</label>
+                <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+            </div>
+            <div>
+                {loginError && <div className="text-danger">{loginError}</div>}
+            </div>
+            <div>
+                <button onClick={handleSubmit}>Login</button>
             </div>
         </div>
     );

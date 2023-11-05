@@ -1070,7 +1070,7 @@ if(page){
        </Col>
           </Row>
 
-          <Row>
+          {/* <Row>
             <Col>
             <Form.Label><font> <b>Email Id </b></font><font color='red'>*</font></Form.Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
              
@@ -1091,7 +1091,7 @@ if(page){
 {idErrorMessage && <div className="error-message">{idErrorMessage}</div>}
 
        </Col>
-          </Row>
+          </Row> */}
 
 
 

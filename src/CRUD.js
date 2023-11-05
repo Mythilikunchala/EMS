@@ -425,7 +425,7 @@ const femaleData = {
   //       // Set the hierarchy in state
   //       setEmployeeData(jsonData);
   //       setTreeData([hierarchy]);
-  //     })
+  //     })s
   //     .catch((error) => {
   //       console.error('Error fetching employee data:', error);
   //     });
@@ -437,7 +437,7 @@ const femaleData = {
         const pagedatacount = Math.ceil(data.length/3)
         setPageCount(pagedatacount);
 if(page){
-  const LIMIT = 5;
+  const LIMIT = 3;
   const skip = LIMIT * page  // 3 * 1 = 3
   const dataskip = data.slice(page === 1 ? 0 : skip - LIMIT,skip);
   setPageData(dataskip)
@@ -1074,7 +1074,7 @@ if(page){
        </Col>
           </Row>
 
-          <Row>
+       {/*    <Row>
             <Col>
             <Form.Label><font> <b>Email Id </b></font><font color='red'>*</font></Form.Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
              
@@ -1098,7 +1098,7 @@ if(page){
           </Row>
 
 
-
+ */}
           <Row>
             <Col>
               <Form.Label><font> <b>Name</b> </font><font color='red'>*</font></Form.Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
